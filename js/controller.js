@@ -119,14 +119,14 @@
 	// Define scripts and styles for conditional loading:
 	md.assets = {
 		js: {
-			jQuery   : "js/libs/jquery.min.js",
-			plugin   : "js/plugins.js",
-			init     : "js/init.js",
-			touch    : "js/touch.js",
-			fitText  : "js/libs/fittext.js"
+			jQuery   : "libs/jquery.min.js",
+			plugin   : "plugins.js",
+			init     : "init.js",
+			touch    : "touch.js",
+			fitText  : "libs/fittext.js"
 		},
 		css: {
-			fonts 	 : "css/fonts.css"
+			fonts 	 : "fonts.css"
 		}
 	};
 
@@ -152,18 +152,16 @@
 		}
 
 		// Load enhanced assets:
-		for ( i = 0; i <= jsToLoad.length; i++ ) {
-			md.load.script( jsToLoad[i] );
+		if( jsToLoad.length ){
+			md.load.script( jsToLoad.join(",") );
 		}
-
-		for ( i = 0; i <= cssToLoad.length; i++ ) {
-			md.load.style( cssToLoad[i] );
+		if( cssToLoad.length ){
+			md.load.style( cssToLoad.join(",") );
 		}
 		
 		// Advanced support 
 		md.support = {
-			touch		 : Modernizr.touch,
-			websockets	 : Modernizr.websockets
+			touch		 : Modernizr.touch
 		};
 		
 		// If it's a device that supports touch...
